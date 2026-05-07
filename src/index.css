@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-2 bg-secondary text-white rounded-lg hover:bg-blue-700 transition duration-300;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2 bg-accent text-white rounded-lg hover:bg-orange-500 transition duration-300;
+  }
+
+  .container-wrapper {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl font-bold text-gray-900 mb-4;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-300;
+  }
+}

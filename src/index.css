@@ -38,4 +38,40 @@ html {
   .card {
     @apply bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-300;
   }
+
+  /* Moving line hover effect */
+  .hover-line {
+    @apply relative inline-block;
+  }
+
+  .hover-line::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 ease-out;
+  }
+
+  .hover-line:hover::after {
+    @apply w-full;
+  }
+
+  /* Alternative: animated line from center */
+  .hover-line-center::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 w-0 h-0.5 bg-secondary transition-all duration-300 ease-out;
+    transform: translateX(-50%);
+  }
+
+  .hover-line-center:hover::after {
+    @apply w-full;
+    transform: translateX(-50%);
+  }
+
+  /* Moving line with accent color */
+  .hover-line-accent::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-1 bg-accent transition-all duration-300 ease-out;
+  }
+
+  .hover-line-accent:hover::after {
+    @apply w-full;
+  }
 }

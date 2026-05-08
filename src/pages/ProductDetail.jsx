@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
+import { useCart } from '../hooks/useCart';
 import { productsData } from '../data/products';
 
 export default function ProductDetail() {
   const { id } = useParams();
+  const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -135,6 +137,7 @@ export default function ProductDetail() {
 
             {/* Add to Cart */}
             <button
+              onClick={() => addToCart(product, quantity)}
               className="w-full py-3 rounded font-bold text-lg transition mb-3 btn-primary hover:bg-blue-700"
             >
               🛒 Add to Cart

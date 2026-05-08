@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import HoverLink from './HoverLink';
+import { useCart } from '../hooks/useCart';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
   const [searchOpen, setSearchOpen] = useState(false);
+  const { cartItems } = useCart();
+
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <nav className="bg-primary text-white sticky top-0 z-50 shadow-lg">
@@ -18,10 +22,10 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            <Link to="/" className="hover:text-secondary transition">Home</Link>
-            <Link to="/products" className="hover:text-secondary transition">Products</Link>
-            <Link to="/about" className="hover:text-secondary transition">About</Link>
-            <Link to="/contact" className="hover:text-secondary transition">Contact</Link>
+            <HoverLink to="/" className="hover:text-secondary transition">Home</HoverLink>
+            <HoverLink to="/products" className="hover:text-secondary transition">Products</HoverLink>
+            <HoverLink to="/about" className="hover:text-secondary transition">About</HoverLink>
+            <HoverLink to="/contact" className="hover:text-secondary transition">Contact</HoverLink>
           </div>
 
           {/* Right Icons */}

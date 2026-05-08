@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom';
+import { useCart } from '../hooks/useCart';
 
 export default function ProductCard({ product }) {
+  const { addToCart } = useCart();
+
   const starRating = (rating) => {
     return '⭐'.repeat(Math.floor(rating)) + (rating % 1 ? '✨' : '');
+  };
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    addToCart(product, 1);
   };
 
   return (
@@ -43,6 +51,7 @@ export default function ProductCard({ product }) {
           </div>
 
           <button
+            onClick={handleAddToCart}
             className="w-full py-2 rounded font-bold transition bg-secondary text-white hover:bg-blue-700"
           >
             Add to Cart
